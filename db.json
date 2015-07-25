@@ -3,10 +3,39 @@
     {
       "id": 1,
       "title": "To Kill a Mocking Bird",
-      "author": "Matt",
+      "author": "Matsst",
       "pageCount": 200,
       "genre": "fiction",
-      "myThoughts": "Well hmmmmmm......"
+      "myThoughts": "Well hmmmmmm......",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/79/To_Kill_a_Mockingbird.JPG",
+      "shmee": "shmaaaa"
+    },
+    {
+      "author": "Michael Crichton",
+      "title": "Jurassic Park",
+      "pageCount": 200,
+      "myThoughts": "It's not bad",
+      "genre": "Horror",
+      "id": 2,
+      "imageUrl": "http://ia.media-imdb.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_SX214_AL_.jpg",
+      "shmee": "shmaa"
+    },
+    {
+      "author": "asdf",
+      "title": "asdf",
+      "pageCount": "adsf",
+      "myThoughts": "asdfas",
+      "genre": "asdfa",
+      "id": 3
+    },
+    {
+      "author": "asdfasdf",
+      "title": "asdfas",
+      "pageCount": "asdf",
+      "myThoughts": "asdfasd",
+      "genre": "asdfas",
+      "imageUrl": "http://buzzsharer.com/wp-content/uploads/2015/06/beautiful-running-horse.jpg",
+      "id": 4
     }
   ]
 }
