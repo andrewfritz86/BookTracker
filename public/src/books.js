@@ -40,6 +40,7 @@ var BookContainer = React.createClass({
     return (
       <div className="book-container">
         <BookList data={this.state.data}/>
+        <BookForm />
       </div>
     );
   }
@@ -69,6 +70,33 @@ var Book = React.createClass({
         <h5> My thoughts </h5>
         <p> {this.props.myThoughts} </p>
       </div>
+    );
+  }
+});
+
+
+
+
+
+var BookForm = React.createClass({
+  handleSubmit: function(event){
+    event.preventDefault();
+    console.log("handling submit");
+  },
+  handleFocus: function(event){
+    console.log("handling focus");
+    event.stopPropagation();
+  },
+  render: function(){
+    return (
+      <form className="book-form" onSubmit={this.handleSubmit}>
+        <input type="text" ref="author" placeholder="author's name" onFocus={this.handleFocus}/>
+        <input type="text" ref="title" placeholder="book title" />
+        <input type="text" ref="page-count" placeholder="page count" />
+        <input type="text" ref="my-thoughts" placeholder="my thoughts..."/>
+        <input type="text" ref="genre" placeholder="genre"/>
+        <input type="submit" value="add a book"/>
+      </form>
     );
   }
 });
