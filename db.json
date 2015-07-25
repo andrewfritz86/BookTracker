@@ -1,0 +1,12 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "To Kill a Mocking Bird",
+      "author": "Matt",
+      "pageCount": 200,
+      "genre": "fiction",
+      "myThoughts": "Well hmmmmmm......"
+    }
+  ]
+}
