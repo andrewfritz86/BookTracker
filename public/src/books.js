@@ -1,5 +1,5 @@
 
-
+var booker = new Book()
 var Header = React.createClass({
   render: function(){
     return (
@@ -7,9 +7,29 @@ var Header = React.createClass({
           <h1 className="headline">
             Reactive Book Tracker!
           </h1>
-            <BookContainer url={this.props.url} />
+          <BookContainer url={this.props.url} />
+          <BackboneBook model={booker} />
         </div>
       );
+  }
+});
+
+//react class that expects a backbone model for data.
+var BackboneBook = React.createClass({
+  componentDidMount: function(){
+    var that = this;
+    this.props.model.on("change", function(){
+      that.handleDataChange();
+    })
+  },
+  render: function(){
+    return (
+      <h1> {this.props.model.get("author")} </h1>
+      );
+  },
+
+  handleDataChange: function(){
+    this.forceUpdate();
   }
 });
 
@@ -33,13 +53,11 @@ var BookContainer = React.createClass({
       url: this.props.url,
       dataType: "JSON"
     }).done(function(data){
-      console.log(data);
       that.setState({data:data})
     });
   },
   //callback that will POST data to server, can be sent down to the form via props
   sendNewBookToServer: function(bookData){
-    console.log(bookData);
     var that = this;
     $.ajax({
       type: "post",
@@ -63,8 +81,6 @@ var BookContainer = React.createClass({
 
 var BookList = React.createClass({
   render: function(){
-    console.log("rendering book list")
-    console.log(this.props.data)
     var myBooks = this.props.data.map(function(book){
       return (<Book author={book.author} title={book.title} myThoughts={book.myThoughts} pageCount={book.pageCount} author={book.author} genre={book.genre} imageUrl={book.imageUrl} />);
     })
@@ -114,7 +130,6 @@ var Book = React.createClass({
 var BookForm = React.createClass({
   handleSubmit: function(event){
     event.preventDefault();
-    console.log("handling submit");
     //grab input values
     var author = React.findDOMNode(this.refs.author).value;
     var title = React.findDOMNode(this.refs.title).value;
