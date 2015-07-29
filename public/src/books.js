@@ -15,7 +15,7 @@ var Header = React.createClass({
           <h1 className="headline">
             Reactive Book Tracker!
           </h1>
-          <BookContainer url={this.props.url} />
+          <BookContainer url={this.props.url} collection={this.props.collection} />
         </div>
       );
   }
@@ -59,16 +59,26 @@ var BookContainer = React.createClass({
   // },
 
   grabBooksFromServer: function(){
+
+    //call fetch on collection as prop, use promise to setState of the data returned
     //save context for the callback, as opposed to binding it
     var that = this;
-    $.ajax({
-      type: "get",
-      url: this.props.url,
-      dataType: "JSON"
-    }).done(function(data){
-      that.setState({data:data})
-    });
+    this.props.collection.fetch().done(function(data){
+      that.setState({data:data});
+    })
+
+    // pure ajax call to route that will bring back the objects but not as BB models
+    // var that = this;
+    // $.ajax({
+    //   type: "get",
+    //   url: this.props.url,
+    //   dataType: "JSON"
+    // }).done(function(data){
+    //   that.setState({data:data})
+    // });
+
   },
+  
   //callback that will POST data to server, can be sent down to the form via props
   sendNewBookToServer: function(bookData){
     var that = this;
@@ -219,4 +229,4 @@ var BookForm = React.createClass({
 
 
 
-React.render(<Header url="books"/>, document.getElementById("main"));
+React.render(<Header url="books" collection={bookCollection}/>, document.getElementById("main"));
