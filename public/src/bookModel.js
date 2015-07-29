@@ -3,3 +3,9 @@ var Book = Backbone.Model.extend({
     author: "kralf"
   }
 })
+
+
+var Books = Backbone.Collection.extend({
+  model: Book,
+  url: "/books"
+})

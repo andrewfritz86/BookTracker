@@ -1,5 +1,13 @@
 
-var booker = new Book()
+//indidivual book model
+// var booker = new Book()
+
+//collection holding book models
+var bookCollection = new Books();
+
+
+//TODOneed to make book collection props of react component? this.props.books.fetch() in
+//compenentDidMount? Pass book models down through props and loop through them in booklist?
 var Header = React.createClass({
   render: function(){
     return (
@@ -8,30 +16,29 @@ var Header = React.createClass({
             Reactive Book Tracker!
           </h1>
           <BookContainer url={this.props.url} />
-          <BackboneBook model={booker} />
         </div>
       );
   }
 });
 
 //react class that expects a backbone model for data.
-var BackboneBook = React.createClass({
-  componentDidMount: function(){
-    var that = this;
-    this.props.model.on("change", function(){
-      that.handleDataChange();
-    })
-  },
-  render: function(){
-    return (
-      <h1> {this.props.model.get("author")} </h1>
-      );
-  },
+// var BackboneBook = React.createClass({
+//   componentDidMount: function(){
+//     var that = this;
+//     this.props.model.on("change", function(){
+//       that.handleDataChange();
+//     })
+//   },
+//   render: function(){
+//     return (
+//       <h1> {this.props.model.get("author")} </h1>
+//       );
+//   },
 
-  handleDataChange: function(){
-    this.forceUpdate();
-  }
-});
+//   handleDataChange: function(){
+//     this.forceUpdate();
+//   }
+// });
 
 
 
@@ -43,8 +50,14 @@ var BookContainer = React.createClass({
   componentDidMount: function(){
     //hit the server via ajax, set polling?
     this.grabBooksFromServer();
+    // this.backboneFetch();
     setInterval(this.grabBooksFromServer, 2000);
   },
+
+  // backboneFetch: function(){
+  //   this.props.collection.fetch()
+  // },
+
   grabBooksFromServer: function(){
     //save context for the callback, as opposed to binding it
     var that = this;
