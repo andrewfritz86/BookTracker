@@ -1,0 +1,27 @@
+{
+  "name": "reactbooklist",
+  "version": "1.0.0",
+  "description": "A book tracker!",
+  "main": "server.js",
+  "dependencies": {
+    "json-server": "^0.7.23",
+    "express": "4.13.1",
+    "sqlite3": ">= 0.1.0",
+    "body-parser": ">=0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewfritz86/BookTracker.git"
+  },
+  "author": "Andrew Fritz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewfritz86/BookTracker/issues"
+  },
+  "homepage": "https://github.com/andrewfritz86/BookTracker#readme"
+}
