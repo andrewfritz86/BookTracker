@@ -1,13 +1,10 @@
 
-//indidivual book model
-// var booker = new Book()
 
 //collection holding book models
 var bookCollection = new Books();
 
 
-//TODOneed to make book collection props of react component? this.props.books.fetch() in
-//compenentDidMount? Pass book models down through props and loop through them in booklist?
+//this is basically the container componenet for the entire application
 var Header = React.createClass({
   render: function(){
     return (
@@ -21,64 +18,37 @@ var Header = React.createClass({
   }
 });
 
-//react class that expects a backbone model for data.
-// var BackboneBook = React.createClass({
-//   componentDidMount: function(){
-//     var that = this;
-//     this.props.model.on("change", function(){
-//       that.handleDataChange();
-//     })
-//   },
-//   render: function(){
-//     return (
-//       <h1> {this.props.model.get("author")} </h1>
-//       );
-//   },
-
-//   handleDataChange: function(){
-//     this.forceUpdate();
-//   }
-// });
-
-
-
 var BookContainer = React.createClass({
   //function that sets the initial state of the component, set once
   getInitialState: function(){
+    console.log("grabbing initial state");
     return {data: []};
   },
   componentDidMount: function(){
-    //hit the server via ajax, set polling?
+    console.log("did mount fired")
     this.grabBooksFromServer();
-    // this.backboneFetch();
     setInterval(this.grabBooksFromServer, 2000);
   },
 
-  // backboneFetch: function(){
-  //   this.props.collection.fetch()
-  // },
-
   grabBooksFromServer: function(){
-
     //call fetch on collection as prop, use promise to setState of the data returned
     //save context for the callback, as opposed to binding it
     var that = this;
     this.props.collection.fetch().done(function(data){
+      console.log(data);
       that.setState({data:data});
-    })
-
-    // pure ajax call to route that will bring back the objects but not as BB models
-    // var that = this;
-    // $.ajax({
-    //   type: "get",
-    //   url: this.props.url,
-    //   dataType: "JSON"
-    // }).done(function(data){
-    //   that.setState({data:data})
-    // });
-
+      that.props.collection.on("add",that.updateDom);
+    });
   },
-  
+
+  updateDom: function(){
+    console.log("update dom fired");
+    var that = this;
+    this.props.collection.fetch().done(function(data){
+      that.setState({data:data})  
+    })
+  },
+
   //callback that will POST data to server, can be sent down to the form via props
   sendNewBookToServer: function(bookData){
     var that = this;
@@ -87,7 +57,8 @@ var BookContainer = React.createClass({
       url: this.props.url,
       data: bookData
     }).done(function(data){
-      that.setState({data: data})
+      console.log(that.props.collection);
+      that.props.collection.add(data);
     });
 
   },

@@ -3,12 +3,11 @@
     {
       "id": 1,
       "title": "To Kill a Mocking Bird",
-      "author": "Matsst",
+      "author": "Harper Lee",
       "pageCount": 200,
-      "genre": "fiction",
+      "genre": "Fiction",
       "myThoughts": "Well hmmmmmm......",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/79/To_Kill_a_Mockingbird.JPG",
-      "shmee": "shmaaaa"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/79/To_Kill_a_Mockingbird.JPG"
     },
     {
       "author": "Michael Crichton",
@@ -17,34 +16,43 @@
       "myThoughts": "It's not bad",
       "genre": "Horror",
       "id": 2,
-      "imageUrl": "http://ia.media-imdb.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_SX214_AL_.jpg",
-      "shmee": "shmaa"
+      "imageUrl": "http://ia.media-imdb.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_SX214_AL_.jpg"
     },
     {
-      "author": "asdf",
-      "title": "asdf",
-      "pageCount": "adsf",
-      "myThoughts": "asdfas",
-      "genre": "asdfa",
-      "id": 3
-    },
-    {
-      "author": "asdfasdf",
-      "title": "asdfas",
-      "pageCount": "asdf",
-      "myThoughts": "asdfasd",
-      "genre": "asdfas",
-      "imageUrl": "http://buzzsharer.com/wp-content/uploads/2015/06/beautiful-running-horse.jpg",
+      "author": "Herman Melville",
+      "title": "Moby Dick",
+      "pageCount": 800,
+      "myThoughts": "Way too long",
+      "genre": "Fiction",
+      "imageUrl": "http://www.mobydickcontent.com/wp-content/uploads/2015/03/moby_dick_book_cover_by_mario0357-d6rt002.jpg",
       "id": 4
     },
     {
-      "author": "adf",
-      "title": "asdf",
-      "pageCount": "adf",
-      "myThoughts": "asdfs",
-      "genre": "adsf",
-      "imageUrl": "asdf",
+      "author": "Jack London",
+      "title": "White Fang",
+      "pageCount": 300,
+      "myThoughts": "A classic",
+      "genre": "Fiction",
+      "imageUrl": "https://littlewolfblog.files.wordpress.com/2010/05/call_of_the_wild1.jpg",
       "id": 5
+    },
+    {
+      "author": "Steven King",
+      "title": "The Stand",
+      "pageCount": 900,
+      "myThoughts": "A modern classic.",
+      "genre": "Horror",
+      "imageUrl": "http://media.zenfs.com/en_US/News/US-AFPRelax/9781444720730.b37fd131919.original.jpg",
+      "id": 6
+    },
+    {
+      "author": "Roberto Saviano",
+      "title": "Gomorra",
+      "pageCount": 350,
+      "myThoughts": "Fascinating.",
+      "genre": "Non-Fiction",
+      "imageUrl": "http://myteevee.tv/wp-content/uploads/2014/06/gomorrah_ver6_xlg.jpg",
+      "id": 7
     }
   ]
 }
