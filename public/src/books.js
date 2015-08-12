@@ -35,20 +35,23 @@ var BookContainer = React.createClass({
     //save context for the callback, as opposed to binding it
     var that = this;
     this.props.collection.fetch().done(function(data){
-      console.log(data);
+      //set the state of the componenet to the data from the fetch
       that.setState({data:data});
+      //add a listener for add events on the collectoin, this will fire the updateDom function
+      //TODO: this is currently adding a new listener each time, should refactor this to be added 
+      //when the component mounts
       that.props.collection.on("add",that.updateDom);
     });
   },
 
   updateDom: function(){
-    console.log("update dom fired");
+    //this function refetches the collection and sets the data property of the component state in the callback
     var that = this;
     this.props.collection.fetch().done(function(data){
       that.setState({data:data})  
     })
   },
-
+  
   //callback that will POST data to server, can be sent down to the form via props
   sendNewBookToServer: function(bookData){
     var that = this;
@@ -57,7 +60,7 @@ var BookContainer = React.createClass({
       url: this.props.url,
       data: bookData
     }).done(function(data){
-      console.log(that.props.collection);
+      //add the model to the collection, which will fire an add event
       that.props.collection.add(data);
     });
 
