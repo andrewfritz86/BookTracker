@@ -2,7 +2,39 @@
   font-family: Helvetica;
 }
 
+#main {
+  background-color: #DADFE1;
+}
+
 .card-holder{
   display: inline-block;
   margin: 5px;
+  box-shadow: 2px 5px 10px #6C7A89;
+}
+
+.main-header{
+  text-align: center;
+  padding-top: 20px;
+}
+
+.field{
+  box-shadow: 2px 5px 10px #6C7A89;
+}
+
+.book-list{
+  margin-bottom: 10px;
+}
+
+button.ui.button.green.move{
+  margin-bottom: 15px;
+  
+}
+
+.form-container{
+  margin-right: 15%;
+  margin-left: 15%;
+}
+
+h1, h3 {
+  text-shadow: 1px 1px 1px black;
 }

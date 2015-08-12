@@ -9,7 +9,7 @@ var Header = React.createClass({
   render: function(){
     return (
         <div className="main-header">
-          <h1 className="headline">
+          <h1 className="headline ui green header">
             Reactive Book Tracker!
           </h1>
           <BookContainer url={this.props.url} collection={this.props.collection} />
@@ -51,7 +51,7 @@ var BookContainer = React.createClass({
       that.setState({data:data})  
     })
   },
-  
+
   //callback that will POST data to server, can be sent down to the form via props
   sendNewBookToServer: function(bookData){
     var that = this;
@@ -68,7 +68,7 @@ var BookContainer = React.createClass({
   render: function(){
     return (
       <div className="book-container">
-        <BookList data={this.state.data}/>
+        <BookList className="book-list" data={this.state.data}/>
         <BookForm sendUpNewBook={this.sendNewBookToServer}/>
       </div>
     );
@@ -83,7 +83,7 @@ var BookList = React.createClass({
     })
     return (
       <div className="book-list">
-        <h3> My Book List: </h3>
+        <h3 className="ui green header"> My Book List: </h3>
         {myBooks}
       </div>
     );
@@ -158,29 +158,31 @@ var BookForm = React.createClass({
   },
   render: function(){
     return (
-      <form className="book-form ui form" onSubmit={this.handleSubmit}>
-        <div className="field">
-          <input type="text" ref="author" placeholder="author's name" onFocus={this.handleFocus}/>
-        </div>
-        <div className="field">
-          <input type="text" ref="title" placeholder="book title" />
-        </div>
-        <div className="field">
-          <input type="text" ref="pageCount" placeholder="page count" />
-        </div>
-        <div className="field">
-          <input type="text" ref="myThoughts" placeholder="my thoughts..."/>
-        </div>
-        <div className="field">
-          <input type="text" ref="genre" placeholder="genre"/>
-        </div>
-        <div className="field">
-          <input type="text" ref="imageUrl" placeholder="image url"/>
-        </div>
-        <button type="submit" className="ui button">
-          Add a Book.
-        </button>
-      </form>
+      <div className="form-container">
+        <form className="book-form ui form moveup" onSubmit={this.handleSubmit}>
+          <div className="field">
+            <input type="text" ref="author" placeholder="author's name" onFocus={this.handleFocus}/>
+          </div>
+          <div className="field">
+            <input type="text" ref="title" placeholder="book title" />
+          </div>
+          <div className="field">
+            <input type="text" ref="pageCount" placeholder="page count" />
+          </div>
+          <div className="field">
+            <input type="text" ref="myThoughts" placeholder="my thoughts..."/>
+          </div>
+          <div className="field">
+            <input type="text" ref="genre" placeholder="genre"/>
+          </div>
+          <div className="field">
+            <input type="text" ref="imageUrl" placeholder="image url"/>
+          </div>
+          <button type="submit" className="ui button green move">
+            Add a Book.
+          </button>
+        </form>
+      </div>
     );
   }
 });

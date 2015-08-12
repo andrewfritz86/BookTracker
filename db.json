@@ -53,6 +53,15 @@
       "genre": "Non-Fiction",
       "imageUrl": "http://myteevee.tv/wp-content/uploads/2014/06/gomorrah_ver6_xlg.jpg",
       "id": 7
+    },
+    {
+      "author": "Frank Norris",
+      "title": "McTeague",
+      "pageCount": 400,
+      "myThoughts": "Classic book, depressing...",
+      "genre": "Fiction",
+      "imageUrl": "http://www.lornebair.com/pictures/17061.jpg",
+      "id": 8
     }
   ]
 }
