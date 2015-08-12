@@ -10,7 +10,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 
 
-
 app.get('/', function (req, res) {
   var html = fs.readFileSync("./public/index.html", "utf8");
   res.send(html);
@@ -39,7 +38,10 @@ app.post('/books', function(req, res){
 });
 
 
-var server = app.listen(3000, function () {
+var port = process.env.PORT || 3000;
+
+
+var server = app.listen(port, function () {
   var host = server.address().address;
   var port = server.address().port;
 
