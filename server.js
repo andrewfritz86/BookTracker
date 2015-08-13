@@ -37,6 +37,12 @@ app.post('/books', function(req, res){
   })
 });
 
+app.delete('/books/:id', function(req, res){
+  var id = req.params.id;
+  var sql= "DELETE FROM books WHERE id="+id;
+  db.run(sql);
+});
+
 
 var port = process.env.PORT || 3000;
 

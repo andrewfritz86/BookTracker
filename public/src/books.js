@@ -3,7 +3,6 @@
 //collection holding book models
 var bookCollection = new Books();
 
-
 //this is basically the container componenet for the entire application
 var Header = React.createClass({
   render: function(){
@@ -27,7 +26,14 @@ var BookContainer = React.createClass({
   componentDidMount: function(){
     console.log("did mount fired")
     this.grabBooksFromServer();
+    this.props.collection.on("remove",this.removeBookComponent.bind(this));
     setInterval(this.grabBooksFromServer, 2000);
+  },
+
+  removeBookComponent: function(){
+    //grab updated state of models array from collection, set state of componeent ot that.
+    this.setState({data: this.props.collection.toJSON()});
+
   },
 
   grabBooksFromServer: function(){
@@ -53,8 +59,14 @@ var BookContainer = React.createClass({
   },
 
   deleteBook: function(id){
-    console.log("delete book funciton fired" + id);
+    console.log("delete book function fired" + id);
     //remove model from collection? this should fire an event, can set a listener to rerender when delete event happens?
+    //grab the model from the collection on props
+    var model = _.find(this.props.collection.models,function(book){
+                    return(book.id === id);
+                  });
+    var deleteMe = this.props.collection.remove(model);
+    deleteMe.deleteBook();
   },
   //callback that will POST data to server, can be sent down to the form via props
   sendNewBookToServer: function(bookData){
@@ -64,7 +76,6 @@ var BookContainer = React.createClass({
       url: this.props.url,
       data: bookData
     }).done(function(data){
-      //add the model to the collection, which will fire an add event
       that.props.collection.add(data);
     });
 
@@ -102,6 +113,10 @@ var Book = React.createClass({
     this.props.deleteBook(this.props.id);
   },
 
+  handleThoughts: function(event){
+    $(event.target.parentElement.nextSibling).toggleClass("thoughts");
+  },
+
   //this will be rendered as a semantic UI card
   render: function(){
     return (
@@ -111,7 +126,10 @@ var Book = React.createClass({
             <img src={this.props.imageUrl} />
           </div>
           <div className="content">
-            <a className="header"> {this.props.title} </a>
+            <a className="header" onClick={this.handleThoughts}> {this.props.title} </a>
+            <div className="thoughts">
+              {this.props.myThoughts}
+            </div>
             <div className="meta">
               <span className="date"> {this.props.author} </span>
             </div>
@@ -216,3 +234,12 @@ var BookForm = React.createClass({
 
 
 React.render(<Header url="books" collection={bookCollection}/>, document.getElementById("main"));
+
+
+
+
+
+
+
+
+

@@ -17,6 +17,14 @@
   padding-top: 20px;
 }
 
+.thoughts{
+  visibility: hidden;
+}
+
+.showthoughts{
+  visibility: visible;
+}
+
 .field{
   box-shadow: 2px 5px 10px #6C7A89;
 }
