@@ -38,3 +38,14 @@ button.ui.button.green.move{
 h1, h3 {
   text-shadow: 1px 1px 1px black;
 }
+
+.delete-button{
+  margin-top: 3px;
+  background-color: #F22613;
+  color:white;
+  box-shadow: 1px 1px 1px black;
+}
+
+.delete-button:hover{
+  background-color: #C0392B;
+}

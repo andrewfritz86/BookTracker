@@ -52,6 +52,10 @@ var BookContainer = React.createClass({
     })
   },
 
+  deleteBook: function(id){
+    console.log("delete book funciton fired" + id);
+    //remove model from collection? this should fire an event, can set a listener to rerender when delete event happens?
+  },
   //callback that will POST data to server, can be sent down to the form via props
   sendNewBookToServer: function(bookData){
     var that = this;
@@ -68,7 +72,7 @@ var BookContainer = React.createClass({
   render: function(){
     return (
       <div className="book-container">
-        <BookList className="book-list" data={this.state.data}/>
+        <BookList className="book-list" data={this.state.data} deleteBook={this.deleteBook}/>
         <BookForm sendUpNewBook={this.sendNewBookToServer}/>
       </div>
     );
@@ -78,8 +82,9 @@ var BookContainer = React.createClass({
 
 var BookList = React.createClass({
   render: function(){
+    var that = this;
     var myBooks = this.props.data.map(function(book){
-      return (<Book author={book.author} title={book.title} myThoughts={book.myThoughts} pageCount={book.pageCount} author={book.author} genre={book.genre} imageUrl={book.imageUrl} />);
+      return (<Book deleteBook={that.props.deleteBook} id={book.id} author={book.author} title={book.title} myThoughts={book.myThoughts} pageCount={book.pageCount} author={book.author} genre={book.genre} imageUrl={book.imageUrl} />);
     })
     return (
       <div className="book-list">
@@ -92,6 +97,10 @@ var BookList = React.createClass({
 
 
 var Book = React.createClass({
+
+  handleDelete: function(event){
+    this.props.deleteBook(this.props.id);
+  },
 
   //this will be rendered as a semantic UI card
   render: function(){
@@ -109,6 +118,7 @@ var Book = React.createClass({
             <div className="meta">
               <span className="date"> {this.props.pageCount}  pages </span>
               <span className="date"> genre: {this.props.genre}   </span>
+              <div className="delete-button" onClick={this.handleDelete}> Delete </div>
             </div>
             <div className="content">
               {this.props.description}
