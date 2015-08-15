@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 
 app.get('/', function (req, res) {
-  var html = fs.readFileSync("./public/index.html", "utf8");
+  var html = fs.readFileSync("./views/index.html", "utf8");
   res.send(html);
 });
 
@@ -23,7 +23,6 @@ app.get('/books', function(req, res){
 });
 
 app.post('/books', function(req, res){
-  //send back json of added book
   var author = req.body.author;
   var title = req.body.title;
   var pageCount = req.body.pageCount;
@@ -33,7 +32,6 @@ app.post('/books', function(req, res){
   var payload = "'" +author + "','" + title + "','" + pageCount + "','"+ myThoughts + "','" + genre + "','" + imageUrl + "'";
   var sql = "INSERT INTO books (author, title, pageCount, myThoughts, genre, imageUrl) VALUES (" + payload + ");"
   db.run(sql, function(data){
-    console.log(data);
   })
 });
 

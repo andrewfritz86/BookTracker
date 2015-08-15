@@ -11,9 +11,3 @@ var Book = Backbone.Model.extend({
     });
   }
 })
-
-
-var Books = Backbone.Collection.extend({
-  model: Book,
-  url: "/books"
-})
